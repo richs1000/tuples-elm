@@ -104,11 +104,11 @@ var _user$project$Tuples$tupleItemToWrongTypeString = function (t) {
 	var _p5 = t;
 	switch (_p5.ctor) {
 		case 'RandomInt':
-			return 'Bool';
+			return 'bool';
 		case 'RandomString':
-			return 'Int';
+			return 'int';
 		default:
-			return 'String';
+			return 'string';
 	}
 };
 var _user$project$Tuples$tupleToWrongTypeString = function (tup) {
@@ -118,11 +118,11 @@ var _user$project$Tuples$tupleItemToTypeString = function (t) {
 	var _p6 = t;
 	switch (_p6.ctor) {
 		case 'RandomInt':
-			return 'Int';
+			return 'int';
 		case 'RandomString':
-			return 'String';
+			return 'string';
 		default:
-			return 'Bool';
+			return 'bool';
 	}
 };
 var _user$project$Tuples$tupleToTypeString = function (tup) {
