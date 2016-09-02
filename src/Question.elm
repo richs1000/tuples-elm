@@ -129,7 +129,7 @@ newQuestion randomValues index =
                     randomTupleOfTuples randomValues [ 2, 3 ] 2
 
                 exteriorIndex =
-                    pickOne (List.drop 14 randomValues) [ 1, 2, 3 ] 1
+                    pickOne (List.drop 14 randomValues) [ 1, 2 ] 1
 
                 interiorIndex =
                     pickOne (List.drop 15 randomValues) [ 1, 2 ] 1
