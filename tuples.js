@@ -9793,7 +9793,7 @@ var _user$project$Question$newQuestion = F2(
 					_user$project$RandomStuff$pickOne,
 					A2(_elm_lang$core$List$drop, 14, randomValues),
 					_elm_lang$core$Native_List.fromArray(
-						[1, 2, 3]),
+						[1, 2]),
 					1);
 				var strExpr = A2(
 					_elm_lang$core$Basics_ops['++'],
