@@ -65,166 +65,132 @@ var _user$project$Question$newQuestion = F2(
 					_user$project$Tuples$tupleOfTuplesToString(tupOfTups)),
 					A2(_elm_lang$core$Basics_ops['++'], 'val ans = ', strExpr)
 				]);
+			var answer$ = _elm_lang$core$Native_Utils.eq(randIndex, 1) ? _user$project$Tuples$tupleToString(
+				A2(
+					_elm_lang$core$Maybe$withDefault,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$Tuples$RandomInt(1)
+						]),
+					_elm_lang$core$List$head(tupOfTups))) : (_elm_lang$core$Native_Utils.eq(randIndex, 2) ? _user$project$Tuples$tupleToString(
+				A2(
+					_elm_lang$core$Maybe$withDefault,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$Tuples$RandomInt(1)
+						]),
+					_elm_lang$core$List$head(
+						A2(_elm_lang$core$List$drop, 1, tupOfTups)))) : _user$project$Tuples$tupleToString(
+				A2(
+					_elm_lang$core$Maybe$withDefault,
+					_elm_lang$core$Native_List.fromArray(
+						[
+							_user$project$Tuples$RandomInt(1)
+						]),
+					_elm_lang$core$List$head(
+						A2(_elm_lang$core$List$drop, 2, tupOfTups)))));
 			var distractors = _elm_lang$core$Native_List.fromArray(
 				[
-					{
-					ctor: '_Tuple2',
-					_0: 1,
-					_1: _user$project$Tuples$tupleToString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(tupOfTups)))
-				},
-					{
-					ctor: '_Tuple2',
-					_0: 2,
-					_1: _user$project$Tuples$tupleToString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(
-								A2(_elm_lang$core$List$drop, 1, tupOfTups))))
-				},
-					{
-					ctor: '_Tuple2',
-					_0: 3,
-					_1: _user$project$Tuples$tupleToString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(
-								A2(_elm_lang$core$List$drop, 2, tupOfTups))))
-				},
-					{
-					ctor: '_Tuple2',
-					_0: 4,
-					_1: _user$project$Tuples$tupleToTypeString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(tupOfTups)))
-				},
-					{
-					ctor: '_Tuple2',
-					_0: 5,
-					_1: _user$project$Tuples$tupleToTypeString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(
-								A2(_elm_lang$core$List$drop, 1, tupOfTups))))
-				},
-					{
-					ctor: '_Tuple2',
-					_0: 6,
-					_1: _user$project$Tuples$tupleToTypeString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(
-								A2(_elm_lang$core$List$drop, 2, tupOfTups))))
-				},
-					{
-					ctor: '_Tuple2',
-					_0: 7,
-					_1: _user$project$Tuples$tupleToListString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(tupOfTups)))
-				},
-					{
-					ctor: '_Tuple2',
-					_0: 8,
-					_1: _user$project$Tuples$tupleToListString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(
-								A2(_elm_lang$core$List$drop, 1, tupOfTups))))
-				},
-					{
-					ctor: '_Tuple2',
-					_0: 9,
-					_1: _user$project$Tuples$tupleToListString(
-						A2(
-							_elm_lang$core$Maybe$withDefault,
-							_elm_lang$core$Native_List.fromArray(
-								[
-									_user$project$Tuples$RandomInt(1)
-								]),
-							_elm_lang$core$List$head(
-								A2(_elm_lang$core$List$drop, 2, tupOfTups))))
-				}
+					_user$project$Tuples$tupleToString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(tupOfTups))),
+					_user$project$Tuples$tupleToString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
+					_user$project$Tuples$tupleToString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 2, tupOfTups)))),
+					_user$project$Tuples$tupleToTypeString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(tupOfTups))),
+					_user$project$Tuples$tupleToTypeString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
+					_user$project$Tuples$tupleToTypeString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 2, tupOfTups)))),
+					_user$project$Tuples$tupleToListString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(tupOfTups))),
+					_user$project$Tuples$tupleToListString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
+					_user$project$Tuples$tupleToListString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 2, tupOfTups))))
 				]);
 			var _p2 = A2(
 				_elm_lang$core$List$partition,
-				function (_p3) {
-					var _p4 = _p3;
-					return _elm_lang$core$Native_Utils.eq(_p4._0, randIndex);
+				function (d) {
+					return _elm_lang$core$Native_Utils.eq(d, answer$);
 				},
-				distractors);
-			var answers = _p2._0;
+				_user$project$RandomStuff$compressList(distractors));
 			var distractors$ = _p2._1;
-			var answer$ = A2(
-				_elm_lang$core$Maybe$withDefault,
-				{ctor: '_Tuple2', _0: 0, _1: 'uh oh'},
-				_elm_lang$core$List$head(answers));
+			var d = A2(_elm_lang$core$Debug$log, 'partitioned ', distractors$);
 			return {
 				question: question$,
 				distractors: A2(
 					_elm_lang$core$List$map,
-					function (_p5) {
-						var _p6 = _p5;
-						return {ctor: '_Tuple2', _0: _p6._1, _1: 'Incorrect.'};
+					function (dis) {
+						return {ctor: '_Tuple2', _0: dis, _1: 'Incorrect.'};
 					},
-					_user$project$RandomStuff$compressList(distractors$)),
-				answer: {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Basics$snd(answer$),
-					_1: 'Correct'
-				},
+					distractors$),
+				answer: {ctor: '_Tuple2', _0: answer$, _1: 'Correct'},
 				format: _user$project$Question$MultipleChoice
 			};
 		} else {
 			if (_elm_lang$core$Native_Utils.eq(index, 2)) {
-				var dTup2 = A3(
-					_user$project$Tuples$randomTuple,
-					A2(_elm_lang$core$List$drop, 20, randomValues),
-					_elm_lang$core$Native_List.fromArray(
-						[2, 3, 4]),
-					2);
-				var dTup1 = A3(
-					_user$project$Tuples$randomTuple,
-					A2(_elm_lang$core$List$drop, 10, randomValues),
-					_elm_lang$core$Native_List.fromArray(
-						[2, 3, 4]),
-					2);
 				var rTup = A3(
 					_user$project$Tuples$randomTuple,
 					randomValues,
@@ -244,40 +210,32 @@ var _user$project$Question$newQuestion = F2(
 					_0: _user$project$Tuples$tupleToTypeString(rTup),
 					_1: 'Correct'
 				};
-				var distractors$ = _user$project$RandomStuff$compressList(
-					_elm_lang$core$Native_List.fromArray(
-						[
-							answer$,
-							{
-							ctor: '_Tuple2',
-							_0: _user$project$Tuples$tupleToWrongTypeString(rTup),
-							_1: 'Incorrect. You have listed them in the wrong order'
-						},
-							{
-							ctor: '_Tuple2',
-							_0: _user$project$Tuples$tupleItemToString(
-								A2(
-									_elm_lang$core$Maybe$withDefault,
-									_user$project$Tuples$RandomInt(1),
-									_elm_lang$core$List$head(rTup))),
-							_1: 'Incorrect. That is the type of the first item in e'
-						},
-							{
-							ctor: '_Tuple2',
-							_0: _user$project$Tuples$tupleToString(rTup),
-							_1: 'Incorrect. That is the value of e'
-						},
-							{
-							ctor: '_Tuple2',
-							_0: _user$project$Tuples$tupleToTypeString(dTup1),
-							_1: 'Incorrect'
-						},
-							{
-							ctor: '_Tuple2',
-							_0: _user$project$Tuples$tupleToTypeString(dTup2),
-							_1: 'Incorrect'
-						}
-						]));
+				var distractors$ = A2(
+					_elm_lang$core$Debug$log,
+					'compressed ',
+					_user$project$RandomStuff$compressList(
+						_elm_lang$core$Native_List.fromArray(
+							[
+								{
+								ctor: '_Tuple2',
+								_0: _user$project$Tuples$tupleToWrongTypeString(rTup),
+								_1: 'Incorrect. You have listed them in the wrong order'
+							},
+								{
+								ctor: '_Tuple2',
+								_0: _user$project$Tuples$tupleItemToString(
+									A2(
+										_elm_lang$core$Maybe$withDefault,
+										_user$project$Tuples$RandomInt(1),
+										_elm_lang$core$List$head(rTup))),
+								_1: 'Incorrect. That is the type of the first item in e'
+							},
+								{
+								ctor: '_Tuple2',
+								_0: _user$project$Tuples$tupleToString(rTup),
+								_1: 'Incorrect. That is the value of e'
+							}
+							])));
 				return {
 					question: question$,
 					distractors: A2(_elm_lang$core$List$drop, 1, distractors$),
@@ -289,7 +247,7 @@ var _user$project$Question$newQuestion = F2(
 					_user$project$RandomStuff$pickOne,
 					A2(_elm_lang$core$List$drop, 15, randomValues),
 					_elm_lang$core$Native_List.fromArray(
-						[1, 2, 3]),
+						[1, 2]),
 					1);
 				var exteriorIndex = A3(
 					_user$project$RandomStuff$pickOne,
@@ -330,15 +288,19 @@ var _user$project$Question$newQuestion = F2(
 						_user$project$Tuples$extractItemFromTuple,
 						exteriorIndex,
 						A2(_user$project$Tuples$extractTupleFromTuple, interiorIndex, tupOfTups)));
-				var distractors$ = _user$project$RandomStuff$compressList(
-					_user$project$Tuples$tupleOfTuplesToFlatListOfStrings(tupOfTups));
-				var _p7 = A2(
+				var distractors$ = A2(
+					_elm_lang$core$Debug$log,
+					'compressed ',
+					_user$project$RandomStuff$compressList(
+						_user$project$Tuples$tupleOfTuplesToFlatListOfStrings(tupOfTups)));
+				var _p3 = A2(
 					_elm_lang$core$List$partition,
 					function (d) {
 						return _elm_lang$core$Native_Utils.eq(d, answer$);
 					},
 					distractors$);
-				var distractors$$ = _p7._1;
+				var distractors$$ = _p3._1;
+				var distractors$$$ = A2(_elm_lang$core$Debug$log, 'partitioned ', distractors$$);
 				return {
 					question: question$,
 					distractors: A2(

@@ -2,6 +2,7 @@ module Question exposing (..)
 
 import Tuples exposing (..)
 import RandomStuff exposing (pickOne, pickABunch, compressList)
+import Debug exposing (..)
 
 
 type QuestionFormat
@@ -54,45 +55,35 @@ newQuestion randomValues index =
                     , "val ans = " ++ strExpr
                     ]
 
+                answer' =
+                    if randIndex == 1 then
+                        tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
+                    else if randIndex == 2 then
+                        tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
+                    else
+                        tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
+
                 distractors =
-                    [ ( 1
-                      , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
-                      )
-                    , ( 2
-                      , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
-                      )
-                    , ( 3
-                      , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
-                      )
-                    , ( 4
-                      , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
-                      )
-                    , ( 5
-                      , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
-                      )
-                    , ( 6
-                      , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
-                      )
-                    , ( 7
-                      , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
-                      )
-                    , ( 8
-                      , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
-                      )
-                    , ( 9
-                      , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
-                      )
+                    [ tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
+                    , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
+                    , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
+                    , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
+                    , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
+                    , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
+                    , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
+                    , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
+                    , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
                     ]
 
-                ( answers, distractors' ) =
-                    List.partition (\( index, _ ) -> index == randIndex) distractors
+                ( _, distractors' ) =
+                    List.partition (\d -> d == answer') (compressList distractors)
 
-                answer' =
-                    Maybe.withDefault ( 0, "uh oh" ) (List.head answers)
+                d =
+                    Debug.log "partitioned " distractors'
             in
                 { question = question'
-                , distractors = List.map (\( _, dis ) -> ( dis, "Incorrect." )) (compressList distractors')
-                , answer = ( snd answer', "Correct" )
+                , distractors = List.map (\dis -> ( dis, "Incorrect." )) distractors'
+                , answer = ( answer', "Correct" )
                 , format = MultipleChoice
                 }
             -- one level deep - what is the type of?
@@ -100,12 +91,6 @@ newQuestion randomValues index =
             let
                 rTup =
                     randomTuple randomValues [ 2, 3, 4 ] 2
-
-                dTup1 =
-                    randomTuple (List.drop 10 randomValues) [ 2, 3, 4 ] 2
-
-                dTup2 =
-                    randomTuple (List.drop 20 randomValues) [ 2, 3, 4 ] 2
 
                 question' =
                     [ "What is the type of e?"
@@ -118,24 +103,19 @@ newQuestion randomValues index =
                     )
 
                 distractors' =
-                    compressList
-                        [ answer'
-                        , ( tupleToWrongTypeString rTup
-                          , "Incorrect. You have listed them in the wrong order"
-                          )
-                        , ( tupleItemToString (Maybe.withDefault (RandomInt 1) (List.head rTup))
-                          , "Incorrect. That is the type of the first item in e"
-                          )
-                        , ( tupleToString rTup
-                          , "Incorrect. That is the value of e"
-                          )
-                        , ( tupleToTypeString dTup1
-                          , "Incorrect"
-                          )
-                        , ( tupleToTypeString dTup2
-                          , "Incorrect"
-                          )
-                        ]
+                    Debug.log "compressed "
+                        (compressList
+                            [ ( tupleToWrongTypeString rTup
+                              , "Incorrect. You have listed them in the wrong order"
+                              )
+                            , ( tupleItemToString (Maybe.withDefault (RandomInt 1) (List.head rTup))
+                              , "Incorrect. That is the type of the first item in e"
+                              )
+                            , ( tupleToString rTup
+                              , "Incorrect. That is the value of e"
+                              )
+                            ]
+                        )
             in
                 { question = question'
                 , distractors = (List.drop 1 distractors')
@@ -152,7 +132,7 @@ newQuestion randomValues index =
                     pickOne (List.drop 14 randomValues) [ 1, 2, 3 ] 1
 
                 interiorIndex =
-                    pickOne (List.drop 15 randomValues) [ 1, 2, 3 ] 1
+                    pickOne (List.drop 15 randomValues) [ 1, 2 ] 1
 
                 strExpr =
                     "#" ++ toString exteriorIndex ++ " (#" ++ toString interiorIndex ++ " e)"
@@ -170,11 +150,16 @@ newQuestion randomValues index =
                         |> tupleItemToString
 
                 distractors' =
-                    compressList
-                        (tupleOfTuplesToFlatListOfStrings tupOfTups)
+                    Debug.log "compressed "
+                        (compressList
+                            (tupleOfTuplesToFlatListOfStrings tupOfTups)
+                        )
 
                 ( _, distractors'' ) =
                     List.partition (\d -> d == answer') distractors'
+
+                distractors''' =
+                    Debug.log "partitioned " distractors''
             in
                 { question = question'
                 , distractors = List.map (\dis -> ( dis, "Incorrect." )) distractors''
