@@ -1,3 +1,13 @@
+var _user$project$RandomStuff$insertIntoList = F3(
+	function (item, index, lst) {
+		return A2(
+			_elm_lang$core$List$append,
+			A2(_elm_lang$core$List$take, index, lst),
+			A2(
+				_elm_lang$core$List_ops['::'],
+				item,
+				A2(_elm_lang$core$List$drop, index, lst)));
+	});
 var _user$project$RandomStuff$compressList = function (lst) {
 	var helperFunc = F2(
 		function (oldLst, newLst) {
@@ -59,4 +69,42 @@ var _user$project$RandomStuff$pickABunch = F4(
 				cnt - 1,
 				lst,
 				defVal));
+	});
+var _user$project$RandomStuff$randomizeListOrder = F2(
+	function (randomValues, lst) {
+		var helperFunc = F3(
+			function (rVals, oldLst, newLst) {
+				helperFunc:
+				while (true) {
+					var _p3 = oldLst;
+					if (_p3.ctor === '[]') {
+						return newLst;
+					} else {
+						if (_p3._1.ctor === '[]') {
+							return A2(_elm_lang$core$List_ops['::'], _p3._0, newLst);
+						} else {
+							var lstLen = _elm_lang$core$List$length(oldLst);
+							var index = A3(
+								_user$project$RandomStuff$pickOne,
+								rVals,
+								_elm_lang$core$Native_List.range(0, lstLen),
+								0);
+							var newLst$ = A3(_user$project$RandomStuff$insertIntoList, _p3._0, index, newLst);
+							var _v6 = A2(_elm_lang$core$List$drop, 1, rVals),
+								_v7 = _p3._1,
+								_v8 = newLst$;
+							rVals = _v6;
+							oldLst = _v7;
+							newLst = _v8;
+							continue helperFunc;
+						}
+					}
+				}
+			});
+		return A3(
+			helperFunc,
+			randomValues,
+			lst,
+			_elm_lang$core$Native_List.fromArray(
+				[]));
 	});

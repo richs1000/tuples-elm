@@ -99,7 +99,41 @@ var _user$project$Question$newQuestion = F2(
 								_user$project$Tuples$RandomInt(1)
 							]),
 						_elm_lang$core$List$head(tupOfTups))),
+					_user$project$Tuples$tupleToTypeString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(tupOfTups))),
+					_user$project$Tuples$tupleToListString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(tupOfTups))),
 					_user$project$Tuples$tupleToString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
+					_user$project$Tuples$tupleToTypeString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
+					_user$project$Tuples$tupleToListString(
 					A2(
 						_elm_lang$core$Maybe$withDefault,
 						_elm_lang$core$Native_List.fromArray(
@@ -124,42 +158,8 @@ var _user$project$Question$newQuestion = F2(
 							[
 								_user$project$Tuples$RandomInt(1)
 							]),
-						_elm_lang$core$List$head(tupOfTups))),
-					_user$project$Tuples$tupleToTypeString(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_user$project$Tuples$RandomInt(1)
-							]),
-						_elm_lang$core$List$head(
-							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
-					_user$project$Tuples$tupleToTypeString(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_user$project$Tuples$RandomInt(1)
-							]),
 						_elm_lang$core$List$head(
 							A2(_elm_lang$core$List$drop, 2, tupOfTups)))),
-					_user$project$Tuples$tupleToListString(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_user$project$Tuples$RandomInt(1)
-							]),
-						_elm_lang$core$List$head(tupOfTups))),
-					_user$project$Tuples$tupleToListString(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_user$project$Tuples$RandomInt(1)
-							]),
-						_elm_lang$core$List$head(
-							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
 					_user$project$Tuples$tupleToListString(
 					A2(
 						_elm_lang$core$Maybe$withDefault,
