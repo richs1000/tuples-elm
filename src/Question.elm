@@ -65,13 +65,13 @@ newQuestion randomValues index =
 
                 distractors =
                     [ tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
-                    , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
-                    , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
                     , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
-                    , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
-                    , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
                     , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head tupOfTups))
+                    , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
+                    , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
                     , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 1 tupOfTups)))
+                    , tupleToString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
+                    , tupleToTypeString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
                     , tupleToListString (Maybe.withDefault [ RandomInt 1 ] (List.head (List.drop 2 tupOfTups)))
                     ]
 

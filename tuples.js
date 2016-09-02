@@ -9203,6 +9203,16 @@ var _user$project$HistoryView$historySection = F2(
 			A2(_user$project$HistoryView$historyList, history, 0));
 	});
 
+var _user$project$RandomStuff$insertIntoList = F3(
+	function (item, index, lst) {
+		return A2(
+			_elm_lang$core$List$append,
+			A2(_elm_lang$core$List$take, index, lst),
+			A2(
+				_elm_lang$core$List_ops['::'],
+				item,
+				A2(_elm_lang$core$List$drop, index, lst)));
+	});
 var _user$project$RandomStuff$compressList = function (lst) {
 	var helperFunc = F2(
 		function (oldLst, newLst) {
@@ -9264,6 +9274,44 @@ var _user$project$RandomStuff$pickABunch = F4(
 				cnt - 1,
 				lst,
 				defVal));
+	});
+var _user$project$RandomStuff$randomizeListOrder = F2(
+	function (randomValues, lst) {
+		var helperFunc = F3(
+			function (rVals, oldLst, newLst) {
+				helperFunc:
+				while (true) {
+					var _p3 = oldLst;
+					if (_p3.ctor === '[]') {
+						return newLst;
+					} else {
+						if (_p3._1.ctor === '[]') {
+							return A2(_elm_lang$core$List_ops['::'], _p3._0, newLst);
+						} else {
+							var lstLen = _elm_lang$core$List$length(oldLst);
+							var index = A3(
+								_user$project$RandomStuff$pickOne,
+								rVals,
+								_elm_lang$core$Native_List.range(0, lstLen),
+								0);
+							var newLst$ = A3(_user$project$RandomStuff$insertIntoList, _p3._0, index, newLst);
+							var _v6 = A2(_elm_lang$core$List$drop, 1, rVals),
+								_v7 = _p3._1,
+								_v8 = newLst$;
+							rVals = _v6;
+							oldLst = _v7;
+							newLst = _v8;
+							continue helperFunc;
+						}
+					}
+				}
+			});
+		return A3(
+			helperFunc,
+			randomValues,
+			lst,
+			_elm_lang$core$Native_List.fromArray(
+				[]));
 	});
 
 var _user$project$Tuples$tupleTo = F4(
@@ -9591,7 +9639,41 @@ var _user$project$Question$newQuestion = F2(
 								_user$project$Tuples$RandomInt(1)
 							]),
 						_elm_lang$core$List$head(tupOfTups))),
+					_user$project$Tuples$tupleToTypeString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(tupOfTups))),
+					_user$project$Tuples$tupleToListString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(tupOfTups))),
 					_user$project$Tuples$tupleToString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
+					_user$project$Tuples$tupleToTypeString(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_user$project$Tuples$RandomInt(1)
+							]),
+						_elm_lang$core$List$head(
+							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
+					_user$project$Tuples$tupleToListString(
 					A2(
 						_elm_lang$core$Maybe$withDefault,
 						_elm_lang$core$Native_List.fromArray(
@@ -9616,42 +9698,8 @@ var _user$project$Question$newQuestion = F2(
 							[
 								_user$project$Tuples$RandomInt(1)
 							]),
-						_elm_lang$core$List$head(tupOfTups))),
-					_user$project$Tuples$tupleToTypeString(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_user$project$Tuples$RandomInt(1)
-							]),
-						_elm_lang$core$List$head(
-							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
-					_user$project$Tuples$tupleToTypeString(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_user$project$Tuples$RandomInt(1)
-							]),
 						_elm_lang$core$List$head(
 							A2(_elm_lang$core$List$drop, 2, tupOfTups)))),
-					_user$project$Tuples$tupleToListString(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_user$project$Tuples$RandomInt(1)
-							]),
-						_elm_lang$core$List$head(tupOfTups))),
-					_user$project$Tuples$tupleToListString(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						_elm_lang$core$Native_List.fromArray(
-							[
-								_user$project$Tuples$RandomInt(1)
-							]),
-						_elm_lang$core$List$head(
-							A2(_elm_lang$core$List$drop, 1, tupOfTups)))),
 					_user$project$Tuples$tupleToListString(
 					A2(
 						_elm_lang$core$Maybe$withDefault,
@@ -10010,19 +10058,11 @@ var _user$project$QuestionView$radio = F2(
 				]));
 	});
 var _user$project$QuestionView$multipleChoiceButtons = F4(
-	function (answer, distractors, userInput, randomValue) {
-		var answerPosition = A2(
-			_elm_lang$core$Basics$rem,
-			randomValue,
-			1 + _elm_lang$core$List$length(distractors));
+	function (answer, distractors, userInput, randomValues) {
 		var allItems = A2(
-			_elm_lang$core$List$append,
-			A2(_elm_lang$core$List$take, answerPosition, distractors),
-			A2(
-				_elm_lang$core$List$append,
-				_elm_lang$core$Native_List.fromArray(
-					[answer]),
-				A2(_elm_lang$core$List$drop, answerPosition, distractors)));
+			_user$project$RandomStuff$randomizeListOrder,
+			randomValues,
+			A2(_elm_lang$core$List_ops['::'], answer, distractors));
 		var radios = A3(
 			_elm_lang$core$List$foldl,
 			F2(
@@ -10045,7 +10085,7 @@ var _user$project$QuestionView$multipleChoiceButtons = F4(
 			radios);
 	});
 var _user$project$QuestionView$multipleChoice = F3(
-	function (quest, userInput, randomValue) {
+	function (quest, userInput, randomValues) {
 		return A2(
 			_elm_lang$html$Html$form,
 			_elm_lang$core$Native_List.fromArray(
@@ -10055,7 +10095,7 @@ var _user$project$QuestionView$multipleChoice = F3(
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_user$project$QuestionView$questionLines(quest.question),
-					A4(_user$project$QuestionView$multipleChoiceButtons, quest.answer, quest.distractors, userInput, randomValue),
+					A4(_user$project$QuestionView$multipleChoiceButtons, quest.answer, quest.distractors, userInput, randomValues),
 					A2(
 					_elm_lang$html$Html$button,
 					_elm_lang$core$Native_List.fromArray(
@@ -10070,12 +10110,12 @@ var _user$project$QuestionView$multipleChoice = F3(
 				]));
 	});
 var _user$project$QuestionView$displayQuestion = F3(
-	function (quest, userInput, randomValue) {
+	function (quest, userInput, randomValues) {
 		var _p1 = quest.format;
 		if (_p1.ctor === 'FillInTheBlank') {
 			return A2(_user$project$QuestionView$fillInTheBlank, quest, userInput);
 		} else {
-			return A3(_user$project$QuestionView$multipleChoice, quest, userInput, randomValue);
+			return A3(_user$project$QuestionView$multipleChoice, quest, userInput, randomValues);
 		}
 	});
 var _user$project$QuestionView$displayFeedback = F3(
@@ -10170,14 +10210,7 @@ var _user$project$View$debugSection = function (model) {
 var _user$project$View$questionOrFeedback = function (model) {
 	var _p0 = model.success;
 	if (_p0.ctor === 'Nothing') {
-		return A3(
-			_user$project$QuestionView$displayQuestion,
-			model.question,
-			model.userInput,
-			A2(
-				_elm_lang$core$Maybe$withDefault,
-				0,
-				_elm_lang$core$List$head(model.randomValues)));
+		return A3(_user$project$QuestionView$displayQuestion, model.question, model.userInput, model.randomValues);
 	} else {
 		return A3(_user$project$QuestionView$displayFeedback, model.question, model.userInput, model.feedback);
 	}
