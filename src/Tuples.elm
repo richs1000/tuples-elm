@@ -21,26 +21,26 @@ tupleItemToTypeString : TupleItem -> String
 tupleItemToTypeString t =
     case t of
         RandomInt _ ->
-            "Int"
+            "int"
 
         RandomString _ ->
-            "String"
+            "string"
 
         RandomBool _ ->
-            "Bool"
+            "bool"
 
 
 tupleItemToWrongTypeString : TupleItem -> String
 tupleItemToWrongTypeString t =
     case t of
         RandomInt _ ->
-            "Bool"
+            "bool"
 
         RandomString _ ->
-            "Int"
+            "int"
 
         RandomBool _ ->
-            "String"
+            "string"
 
 
 tupleItemToString : TupleItem -> String
@@ -81,51 +81,9 @@ tupleToWrongTypeString tup =
     tupleTo tupleItemToWrongTypeString "(" ")" tup
 
 
-
---     let
---         helperFunc tup' =
---             case tup' of
---                 [] ->
---                     ""
---
---                 t :: [] ->
---                     (tupleItemToWrongTypeString t)
---
---                 t :: ts ->
---                     (tupleItemToWrongTypeString t) ++ ", " ++ (helperFunc ts)
---     in
---         if List.length tup == 1 then
---             helperFunc tup
---         else
---             "(" ++ (helperFunc tup) ++ ")"
---
---
-
-
 tupleToTypeString : RandomTuple -> String
 tupleToTypeString tup =
     tupleTo tupleItemToTypeString "(" ")" tup
-
-
-
---     let
---         helperFunc tup' =
---             case tup' of
---                 [] ->
---                     ""
---
---                 t :: [] ->
---                     (tupleItemToTypeString t)
---
---                 t :: ts ->
---                     (tupleItemToTypeString t) ++ ", " ++ (helperFunc ts)
---     in
---         if List.length tup == 1 then
---             helperFunc tup
---         else
---             "(" ++ (helperFunc tup) ++ ")"
---
---
 
 
 tupleToString : RandomTuple -> String
@@ -136,25 +94,6 @@ tupleToString tup =
 tupleToListString : RandomTuple -> String
 tupleToListString tup =
     tupleTo tupleItemToString "[" "]" tup
-
-
-
---     let
---         helperFunc tup' =
---             case tup' of
---                 [] ->
---                     ""
---
---                 t :: [] ->
---                     (tupleItemToString t)
---
---                 t :: ts ->
---                     (tupleItemToString t) ++ ", " ++ (helperFunc ts)
---     in
---         if List.length tup == 1 then
---             helperFunc tup
---         else
---             "(" ++ (helperFunc tup) ++ ")"
 
 
 tupleOfTuplesTo : (TupleItem -> String) -> String -> String -> TupleOfTuples -> String
